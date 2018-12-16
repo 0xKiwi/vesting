@@ -19,14 +19,18 @@ After setting up `config.js`, run `yarn test` to begin the tests.
 
 To deploy the contract, you must first set the parameters for the function:
 
+| Parameter       | Explanation                                                              | Default             | Requirements                           |
+| --------------- | ------------------------------------------------------------------------ | ------------------- | -------------------------------------- |
+| beneficiary     | The address of the person supposed to receive the tokens after vesting.  | none                | none                                   |
+| token           | The address of the token being vested.                                   | none                | Must be a token address                |
+| start           | The unix timestamp (seconds) of when the vesting should start.           | Date.now() / 1000   | Must be in seconds                     |
+| cliffDuration   | The duration of the cliff in seconds.                                    | CLIFF_DURATION      | Must be divisible by SECONDS_PER_MONTH |
+| vestingDuration | The total duration of the vest in seconds (including cliff).             | TOTAL_VEST_DURATION | Must be divisible by SECONDS_PER_MONTH |
+| revokable       | If the owner of the contract should be able to revoke unreleased tokens. | false               |                                        |
+| totalTokens     | The total amount of tokens being vested.                                 | VESTED_TOKENS       | Must be divisible by MONTHS_TO_RELEASE |
 
-| Parameter       | Explanation                                                               | Default             | Requirements                           |
-|-----------------|---------------------------------------------------------------------------|---------------------|----------------------------------------|
-| beneficiary     | The address of the person supposed to receive the tokens after vesting.   | none                | none                                   |
-| token           | The address of the token being vested.                                    | none                | Must be a token address                |
-| start           | The unix timestamp (seconds) of when the vesting should start.            | Date.now() / 1000   | Must be in seconds                     |
-| cliffDuration   | The duration of the cliff in seconds.                                     | CLIFF_DURATION      | Must be divisible by SECONDS_PER_MONTH |
-| vestingDuration | The total duration of the vest in seconds (including cliff).              | TOTAL_VEST_DURATION | Must be divisible by SECONDS_PER_MONTH |
-| revokable       | If the owner of the contract should be able to revoke unreleased tokens.  | false               |                                        |
-| totalTokens     | The total amount of tokens being vested.                                  | VESTED_TOKENS       | Must be divisible by MONTHS_TO_RELEASE |
+### Deploying to the network
 
+Set the private key and proper RPC url in the web3 provider
+
+Once these are set, run `yarn deploy.js`
