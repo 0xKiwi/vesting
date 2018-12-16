@@ -30,7 +30,7 @@ const deploy = async () => {
       arguments: [
         BENEFICIARYADDRESS, // bene
         TOKENADDRESS, // token
-        STARTINGTIME- Date.now() / 1000, // start
+        Date.now() / 1000, // start
         CLIFF_DURATION, //cliff
         TOTAL_VEST_DURATION, // vestDuration
         SET_REVOKABLE, //revoke
